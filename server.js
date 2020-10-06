@@ -24,6 +24,7 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true,useUnifiedTopo
 //Routes
 app.use('/', require('./routes/index'));
 app.use('/authors', require('./routes/authors'));
+app.use('/books', require('./routes/books'));
 
 
 const port = process.env.PORT || 3000;
