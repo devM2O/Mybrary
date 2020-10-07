@@ -5,7 +5,6 @@ const Author = require('../models/author')
 
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg']
 
-
 //All Books routes
 router.get('/', async (req,res) =>{
   let query = Book.find()
@@ -59,7 +58,7 @@ router.post('/', async (req,res) => {
   }
 })
 
-//-------------------------------------------------------------------//
+//-------------------------- functions -------------------------------//
 
 async function renderNewPage(res, book, hasError = false) {
   try{
@@ -83,5 +82,7 @@ function saveCover(book, coverEncoded) {
     book.coverImageType = cover.type
   }
 }
+
+//-------------------------------------------------------------------//
 
 module.exports = router
