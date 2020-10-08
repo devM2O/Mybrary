@@ -1,17 +1,30 @@
-<h2><%= book.title %></h2>
-<img height="150" width="100" src="<%= book.coverImagePath %>">
-<div class="">
-  Author:  <%= book.author.name %>
+<h2 class="page-header"><%= book.title %></h2>
+<div class="book-details">
+  <div class="">
+    <img class="book-cover" src="<%= book.coverImagePath %>">
+    <div class="book-details-btn-grid">
+      <a class="btn btn-primary" href="/books/<%= book._id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm', {url: `/books/${book._id}`}) %>
+      <a class="btn btn-primary book-details-author-button" href="/authors/<%= book.author._id %>">View Author</a>
+    </div>
+  </div>
+
+<div class="book-details-grid">
+  <div class="book-details-label">Author:</div>
+  <div class="">
+    <%= book.author.name %>
+  </div>
+  <div class="book-details-label">Publish Date:</div>
+  <div class="">
+    <%= book.publishDate.toDateString() %>
+  </div>
+  <div class="book-details-label">Page Count:</div>
+  <div class="">
+    <%= book.pageCount %>
+  </div>
+  <div class="book-details-label">Description:</div>
+  <div class="">
+    <%= book.description %>
+  </div>
 </div>
-<div class="">
-  Publish Date: <%= book.publishDate.toDateString() %>
 </div>
-<div class="">
-  Page Count: <%= book.pageCount %>
-</div>
-<div class="">
-  Description: <%= book.description %>
-</div>
-<a href="/books/<%= book._id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', {url: `/books/${book._id}`}) %>
-<a href="/authors/<%= book.author._id %>">View Author</a>
